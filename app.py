@@ -129,8 +129,8 @@ if 'started' not in st.session_state:
 if not st.session_state.started:
     st.markdown("<br><br><br>", unsafe_allow_html=True)
     
-    # تم حل مشكلة علامات التنصيص هنا
-    st.markdown("<h1 style='font-family: "Aref Ruqaa", serif; color: #feca57; font-size: 70px; text-shadow: 0 0 25px rgba(254,202,87,0.5); margin-bottom: 30px;'>رحلة عمركِ 🍂</h1>", unsafe_allow_html=True)
+    # تم تغيير علامات التنصيص بالكامل لتفادي خطأ بايثون (SyntaxError)
+    st.markdown('''<h1 style="font-family: 'Aref Ruqaa', serif; color: #feca57; font-size: 70px; text-shadow: 0 0 25px rgba(254,202,87,0.5); margin-bottom: 30px;">رحلة عمركِ 🍂</h1>''', unsafe_allow_html=True)
     
     st.markdown('''
     <div style="background: rgba(0, 0, 0, 0.4); padding: 40px; border-radius: 20px; margin: 0 auto 40px auto; max-width: 650px; border: 1px solid rgba(254,202,87,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
