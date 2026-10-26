@@ -183,7 +183,7 @@ else:
         ("العام الثامن عشر", "اكتملَ البدرُ، وصارت الصبيةُ سيدةً تسرقُ الألباب وتأسر الروح."),
         ("العام التاسع عشر", "في عينيكِ بحرٌ من الشغف، وفي ابتسامتكِ وطنٌ ألجأ إليه."),
         ("العام العشرون", "عقدانِ من السحرِ، كلُّ عامٍ فيكِ كان أجملُ من ألفِ عامٍ مما يعُدّون."),
-        ("العام الحادي والعشرون", "تتوّجتِ أميرةً على عرشِ قلبي، سيدةً لكل تفاصيلي وأيامي."),
+        ("العام الحادي والعشرون", "تتوّجتِ أميرةً على عرشِ الجمال، سيدةً تزهو برقتها وتخطفُ الأنظار."),
         ("العام الثاني والعشرون", "نضجٌ ورقة، عقلٌ يزنُ الدنيا، وقلبٌ حنون يسعُ الكون بأسره."),
         ("العام الثالث والعشرون", "هنا والآن، أنتِ أجملُ ما في العمرِ، وكلُّ سنيني لكِ فداءٌ وحب.")
     ]
@@ -203,7 +203,7 @@ else:
     st.markdown("<div style='height: 150px;'></div>", unsafe_allow_html=True)
     st.markdown('''
     <div style="background: rgba(254, 202, 87, 0.15); border: 2px solid #feca57; border-radius: 25px; padding: 70px 30px; text-align: center; box-shadow: 0 0 50px rgba(254, 202, 87, 0.5); margin-bottom: 150px; backdrop-filter: blur(15px);">
-        <h1 style="font-family: 'Aref Ruqaa', serif; color: #feca57; font-size: 55px; margin-bottom: 40px; text-shadow: 0 0 20px #feca57;">🌸 كل عام وأنتِ ملكتي 🌸</h1>
+        <h1 style="font-family: 'Aref Ruqaa', serif; color: #feca57; font-size: 55px; margin-bottom: 40px; text-shadow: 0 0 20px #feca57;">🌸 كل عام وأنتِ أميرةً🌸</h1>
         <h3 style="color: #fff; line-height: 2.4; font-weight: normal; font-size: 32px; text-shadow: 1px 1px 4px #000; font-family: 'Amiri', serif;">
             هَنِيئًا لَكِ العِيدُ الَّذِي أَنْتِ عِيدُهُ<br>
             وَأَنْتِ مِن فَيْضِ البَهَاءِ تَزِيدُهُ<br><br>
