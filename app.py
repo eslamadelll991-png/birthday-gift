@@ -2,10 +2,10 @@ import streamlit as st
 import base64
 import os
 
-# إعداد الصفحة لتكون بملء الشاشة وإخفاء القوائم
-st.set_page_config(page_title="رحلة عمرنا", page_icon="✨", layout="centered")
+# إعداد الصفحة لتكون بملء الشاشة
+st.set_page_config(page_title="رحلة عمرنا", page_icon="✨", layout="centered", initial_sidebar_state="collapsed")
 
-# دمج CSS متقدم لعمل الأنيميشن (أوراق الشجر، الشجرة الخلفية) والتصميم الزجاجي والخطوط
+# دمج CSS لإخفاء عناصر Streamlit وعمل الأنيميشن
 st.markdown('''
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa&display=swap');
@@ -19,9 +19,35 @@ st.markdown('''
         scroll-behavior: smooth;
     }
     
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+    /* إخفاء الهيدر (قائمة GitHub وعلامة Streamlit) */
+    header[data-testid="stHeader"] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0px !important;
+    }
+    
+    /* إخفاء الفوتر (علامة Made with Streamlit) */
+    footer {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    /* إخفاء المنيو الجانبية (Hamburger menu) */
+    #MainMenu {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* إخفاء خيار الديفلوبر */
+    [data-testid="manage-app-button"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    /* إخفاء أي مساحات فارغة فوق */
+    .stApp > header {
+        background-color: transparent;
+    }
     
     .bg-tree {
         position: fixed;
@@ -129,7 +155,6 @@ if 'started' not in st.session_state:
 if not st.session_state.started:
     st.markdown("<br><br><br>", unsafe_allow_html=True)
     
-    # تم تغيير علامات التنصيص بالكامل لتفادي خطأ بايثون (SyntaxError)
     st.markdown('''<h1 style="font-family: 'Aref Ruqaa', serif; color: #feca57; font-size: 70px; text-shadow: 0 0 25px rgba(254,202,87,0.5); margin-bottom: 30px;">رحلة عمركِ 🍂</h1>''', unsafe_allow_html=True)
     
     st.markdown('''
@@ -156,9 +181,6 @@ else:
             audio_played = True
         except Exception as e:
             pass
-            
-    if not audio_played:
-        st.warning("⚠️ ملحوظة: ملف الموسيقى (music.mp3) غير موجود ليعمل في الخلفية.")
 
     st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True)
     
@@ -166,12 +188,12 @@ else:
         ("العام الأول", "ميلادُ النورِ في عينيكِ، فجرٌ أشرقَ في الدنيا ليضيءَ أيامي الآتية."),
         ("العام الثاني", "خطوتكِ الأولى على الأرض، زرعت في الكونِ ياسمينًا لا يذبل."),
         ("العام الثالث", "ضحكتكِ الطفولية، أولُ أغنيةٍ عرفتها العصافير وحفظتها عن ظهر قلب."),
-        ("العام الرابع", "تعلّمَ الوردُ في هذا العام كيف يستمدُّ لونه من حُمرةِ وجنتيكِ."),
+        ("العام الرابع", "تعلّمَ الوردُ في هذا العام كيف يستمدُّ لونه من حُمرةِ وجنتيكِ."),
         ("العام الخامس", "براءةٌ تسكنُ ملامحكِ، جعلتِ الملائكةَ تحرسُ أحلامكِ الرقيقة."),
         ("العام السادس", "كبرتِ قليلًا، وصار للشمسِ منافسٌ حقيقيٌ في الإشراق والدفء."),
         ("العام السابع", "سبعُ سماواتٍ من الرقةِ تجمّعت واستقرت في قلبكِ الصغير."),
         ("العام الثامن", "كفراشةٍ تلوّنُ الحياة، بدأ سحركِ ينبضُ ويزهر في كل الأرجاء."),
-        ("العام التاسع", "تسعةُ أقمارٍ تدورُ حولكِ، تستمدُّ من بهائكِ الضياء والسحر."),
+        ("العام التاسع", "تسعةُ أقمارٍ تدورُ حولكِ، تستمدُّ من بهائكِ الضياء والسحر."),
         ("العام العاشر", "أولُ عقدٍ من الزمان، اكتملت فيه لوحةُ طفولتكِ البهية كقطعةِ سكر."),
         ("العام الحادي عشر", "بدايةُ الصِبا، كغصنِ بانٍ يتمايلُ بخفةٍ مع نسيمِ الصباح."),
         ("العام الثاني عشر", "كبرتِ وكبرَ الحلا، وصار وجهكِ قصيدةً تتغنى بها الأيام."),
@@ -205,9 +227,9 @@ else:
     <div style="background: rgba(254, 202, 87, 0.15); border: 2px solid #feca57; border-radius: 25px; padding: 70px 30px; text-align: center; box-shadow: 0 0 50px rgba(254, 202, 87, 0.5); margin-bottom: 150px; backdrop-filter: blur(15px);">
         <h1 style="font-family: 'Aref Ruqaa', serif; color: #feca57; font-size: 55px; margin-bottom: 40px; text-shadow: 0 0 20px #feca57;">🌸 كل عام وأنتِ أميرةً🌸</h1>
         <h3 style="color: #fff; line-height: 2.4; font-weight: normal; font-size: 32px; text-shadow: 1px 1px 4px #000; font-family: 'Amiri', serif;">
-            هَنِيئًا لَكِ العِيدُ الَّذِي أَنْتِ عِيدُهُ<br>
+            هَنِيئًا لَكِ العِيدُ الَّذِي أَنْتِ عِيدُهُ<br>
             وَأَنْتِ مِن فَيْضِ البَهَاءِ تَزِيدُهُ<br><br>
-            وَإِنِّي إِذَا أَهْدَاكِ غَيْرِي وَرْدَةً<br>
+            وَإِنِّي إِذَا أَهْدَاكِ غَيْرِي وَرْدَةً<br>
             سَأُهْدِيكِ قَلْبًا أَنْتِ فِيهِ وَرِيدُهُ ❤️
         </h3>
     </div>
