@@ -14,30 +14,27 @@ st.markdown('''
         font-family: 'Amiri', serif;
         direction: rtl;
         text-align: center;
-        background: linear-gradient(180deg, #071018, #162635, #22384a); /* خلفية ليلية رومانسية أعمق */
+        background: linear-gradient(180deg, #071018, #162635, #22384a);
         color: #f8fafc;
         scroll-behavior: smooth;
     }
     
-    /* إخفاء علامات Streamlit العلوية والسفلية */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
     
-    /* الشجرة العملاقة في الخلفية */
     .bg-tree {
         position: fixed;
         bottom: -5vh;
         left: 50%;
         transform: translateX(-50%);
         font-size: 75vh;
-        opacity: 0.12; /* شفافة لعدم التشويش على الكلام */
+        opacity: 0.12;
         z-index: 0;
         pointer-events: none;
         filter: drop-shadow(0 0 30px rgba(254, 202, 87, 0.3));
     }
 
-    /* أنيميشن أوراق الشجر المتساقطة مع تمايل يمين ويسار */
     .leaf {
         position: fixed;
         top: -10vh;
@@ -57,7 +54,6 @@ st.markdown('''
         100% { transform: translateX(30px) rotate(60deg); }
     }
     
-    /* تصميم الكروت الزجاجية (Glassmorphism) المطور */
     .glass-card {
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(254, 202, 87, 0.2);
@@ -78,10 +74,9 @@ st.markdown('''
         border: 1px solid rgba(254, 202, 87, 0.6);
     }
     
-    /* خطوط العناوين والقصائد */
     .year-title {
         font-family: 'Aref Ruqaa', serif;
-        color: #feca57; /* لون ذهبي */
+        color: #feca57;
         font-size: 42px;
         margin-bottom: 25px;
         text-shadow: 0px 4px 15px rgba(0,0,0,0.8);
@@ -94,7 +89,6 @@ st.markdown('''
         text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
     }
     
-    /* تخصيص الزر */
     div.stButton > button {
         width: 100%;
         border-radius: 50px !important;
@@ -129,16 +123,13 @@ st.markdown('''
 <div class="leaf" style="left: 92%; animation-duration: 16s; animation-delay: 1s;">🍁</div>
 ''', unsafe_allow_html=True)
 
-# إدارة حالة التطبيق
 if 'started' not in st.session_state:
     st.session_state.started = False
 
 if not st.session_state.started:
-    # شاشة البداية (بوابة الدخول)
     st.markdown("<br><br><br>", unsafe_allow_html=True)
-    st.markdown("<h1 style='font-family: \"Aref Ruqaa\", serif; color: #feca57; font-size: 70px; text-shadow: 0 0 25px rgba(254,202,87,0.5); margin-bottom: 30px;'>رحلة عمركِ 🍂</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-family: "Aref Ruqaa", serif; color: #feca57; font-size: 70px; text-shadow: 0 0 25px rgba(254,202,87,0.5); margin-bottom: 30px;'>رحلة عمركِ 🍂</h1>", unsafe_allow_html=True)
     
-    # الجملة المضافة حديثاً
     st.markdown('''
     <div style="background: rgba(0, 0, 0, 0.4); padding: 40px; border-radius: 20px; margin: 0 auto 40px auto; max-width: 650px; border: 1px solid rgba(254,202,87,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
         <h3 style='color: #e0e0e0; line-height: 2; font-weight: normal; font-size: 28px; font-family: "Amiri", serif;'>
@@ -154,13 +145,11 @@ if not st.session_state.started:
             st.session_state.started = True
             st.rerun()
 else:
-    # المشهد الثاني: تشغيل الموسيقى تلقائياً وتكرارها
     audio_played = False
     if os.path.exists("music.mp3"):
         try:
             with open("music.mp3", "rb") as f:
                 audio_b64 = base64.b64encode(f.read()).decode()
-            # كود HTML لتشغيل الصوت تلقائياً (autoplay) وتكراره (loop)
             st.markdown(f'<audio autoplay loop><source src="data:audio/mp3;base64,{audio_b64}" type="audio/mp3"></audio>', unsafe_allow_html=True)
             audio_played = True
         except Exception as e:
@@ -171,7 +160,6 @@ else:
 
     st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True)
     
-    # قائمة الرسائل الـ 23
     messages = [
         ("العام الأول", "ميلادُ النورِ في عينيكِ، فجرٌ أشرقَ في الدنيا ليضيءَ أيامي الآتية."),
         ("العام الثاني", "خطوتكِ الأولى على الأرض، زرعت في الكونِ ياسمينًا لا يذبل."),
@@ -198,7 +186,6 @@ else:
         ("العام الثالث والعشرون", "هنا والآن، أنتِ أجملُ ما في العمرِ، وكلُّ سنيني لكِ فداءٌ وحب.")
     ]
     
-    # عرض البطاقات بأسلوب سحري
     for idx, (year, text) in enumerate(messages):
         st.markdown(f'''
         <div class="glass-card">
@@ -207,15 +194,19 @@ else:
         </div>
         ''', unsafe_allow_html=True)
         
-        # مسافة بين كل كارت والتاني عشان التمرير
         if idx < len(messages) - 1:
             st.markdown("<div style='height: 100px;'></div>", unsafe_allow_html=True)
             
-    # الخاتمة
+    # الخاتمة الجديدة مع القصيدة
     st.markdown("<div style='height: 150px;'></div>", unsafe_allow_html=True)
     st.markdown('''
     <div style="background: rgba(254, 202, 87, 0.15); border: 2px solid #feca57; border-radius: 25px; padding: 70px 30px; text-align: center; box-shadow: 0 0 50px rgba(254, 202, 87, 0.5); margin-bottom: 150px; backdrop-filter: blur(15px);">
-        <h1 style="font-family: 'Aref Ruqaa', serif; color: #feca57; font-size: 60px; margin-bottom: 30px; text-shadow: 0 0 20px #feca57;">🌸 كل عام وأنتِ ملكتي 🌸</h1>
-        <h3 style="color: #fff; line-height: 2.2; font-weight: normal; font-size: 30px; text-shadow: 1px 1px 4px #000;">كل سنة وأنتي أجمل وأغلى حاجة في حياتي.<br>العمر كله وإحنا سوا يا روح قلبي.</h3>
+        <h1 style="font-family: 'Aref Ruqaa', serif; color: #feca57; font-size: 55px; margin-bottom: 40px; text-shadow: 0 0 20px #feca57;">🌸 كل عام وأنتِ ملكتي 🌸</h1>
+        <h3 style="color: #fff; line-height: 2.4; font-weight: normal; font-size: 32px; text-shadow: 1px 1px 4px #000; font-family: 'Amiri', serif;">
+            هَنِيئًا لَكِ العِيدُ الَّذِي أَنْتِ عِيدُهُ<br>
+            وَأَنْتِ مِن فَيْضِ البَهَاءِ تَزِيدُهُ<br><br>
+            وَإِنِّي إِذَا أَهْدَاكِ غَيْرِي وَرْدَةً<br>
+            سَأُهْدِيكِ قَلْبًا أَنْتِ فِيهِ وَرِيدُهُ ❤️
+        </h3>
     </div>
     ''', unsafe_allow_html=True)
